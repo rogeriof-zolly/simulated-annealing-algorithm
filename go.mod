@@ -1,3 +1,3 @@
-module github.com/rogeriof-zolly/simulated-annealing-algorithm
+module anneling
 
-go 1.21.3
+go 1.20
