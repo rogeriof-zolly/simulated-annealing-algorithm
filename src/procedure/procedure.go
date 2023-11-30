@@ -22,7 +22,7 @@ func Process(
 	for currentTemperatue > 0 {
 		for currentIteration < maxIterations {
 			currentIteration += 1
-			neighbor := randomSolution(solution)
+			neighbor := solution.RandomSolution()
 			delta := validationFunction(neighbor) - validationFunction(solution)
 			if delta > 0 {
 				solution = neighbor
