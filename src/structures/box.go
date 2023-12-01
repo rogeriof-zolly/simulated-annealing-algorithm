@@ -1,13 +1,13 @@
 package structures
 
 type Box struct {
-	items []item
+	Items []Item
 }
 
 func NewEmptyBox() Box {
-	return Box{[]item{}}
+	return Box{[]Item{}}
 }
 
-func (box *Box) addItem(w int, u int) {
-	box.items = append(box.items, item{w, u})
+func (box *Box) AddItem(w int, u int) {
+	box.Items = append(box.Items, Item{w, u})
 }

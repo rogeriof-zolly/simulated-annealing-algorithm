@@ -2,26 +2,26 @@ package structures
 
 import "math/rand"
 
-type item struct {
-	weight  int
-	utility int
+type Item struct {
+	Weight  int
+	Utility int
 }
 
 type Backpack struct {
-	items     []item
+	Items     []Item
 	maxWeight int
 }
 
 func NewEmptyBackpack() Backpack {
-	return Backpack{[]item{}, 20}
+	return Backpack{[]Item{}, 20}
 }
 
-func (backpack *Backpack) addItem(w int, u int) {
-	backpack.items = append(backpack.items, item{w, u})
+func (backpack *Backpack) AddItem(w int, u int) {
+	backpack.Items = append(backpack.Items, Item{w, u})
 }
 
-func (backpack *Backpack) getItems() []item {
-	return backpack.items
+func (backpack *Backpack) GetItems() []Item {
+	return backpack.Items
 }
 
 func (backpack *Backpack) RandomSolution(box *Box) {
@@ -29,26 +29,26 @@ func (backpack *Backpack) RandomSolution(box *Box) {
 		boxPosition      int
 		backpackPosition int
 	)
-	if len(box.items) > 1 {
-		boxPosition = rand.Intn(len(box.items) - 1)
+	if len(box.Items) > 1 {
+		boxPosition = rand.Intn(len(box.Items) - 1)
 	} else {
 		boxPosition = 0
 	}
 
-	if len(backpack.items) > 1 {
-		backpackPosition = rand.Intn(len(backpack.items) - 1)
+	if len(backpack.Items) > 1 {
+		backpackPosition = rand.Intn(len(backpack.Items) - 1)
 	} else {
 		backpackPosition = 0
 	}
 
-	backpack.items[backpackPosition], box.items[boxPosition] = box.items[boxPosition], backpack.items[backpackPosition]
+	backpack.Items[backpackPosition], box.Items[boxPosition] = box.Items[boxPosition], backpack.Items[backpackPosition]
 }
 
 func (backpack Backpack) ValidationFunction() int {
 	sum := 0
 
-	for _, item := range backpack.items {
-		sum += item.utility
+	for _, item := range backpack.Items {
+		sum += item.Utility
 	}
 
 	return sum

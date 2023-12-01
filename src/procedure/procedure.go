@@ -14,6 +14,7 @@ func Process(
 	maxIterations int,
 	initalTemp int,
 	solution structures.Backpack,
+	possibleItems structures.Box,
 ) structures.Backpack {
 	bestSolution := solution
 	currentIteration := 0
@@ -22,7 +23,7 @@ func Process(
 	for currentTemperatue > 0 {
 		for currentIteration < maxIterations {
 			currentIteration += 1
-			neighbor := solution.RandomSolution()
+			neighbor := randomSolution(&possibleItems)
 			delta := validationFunction(neighbor) - validationFunction(solution)
 			if delta > 0 {
 				solution = neighbor
