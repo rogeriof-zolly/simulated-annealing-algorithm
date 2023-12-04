@@ -12,8 +12,8 @@ type Backpack struct {
 	maxWeight int
 }
 
-func NewEmptyBackpack() Backpack {
-	return Backpack{[]Item{}, 20}
+func NewEmptyBackpack(maxWeight int) Backpack {
+	return Backpack{[]Item{}, maxWeight}
 }
 
 func (backpack *Backpack) AddItem(w int, u int) {

@@ -4,7 +4,7 @@ import "testing"
 
 func TestBackpack(t *testing.T) {
 	t.Run("Should add item to backpack", func(t *testing.T) {
-		backpack := NewEmptyBackpack()
+		backpack := NewEmptyBackpack(20)
 
 		backpack.AddItem(10, 40)
 
