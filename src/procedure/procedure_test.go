@@ -11,49 +11,34 @@ func TestProcedure(t *testing.T) {
 	t.Run("Should get the hightest values in a short box", func(t *testing.T) {
 		box := structures.NewEmptyBox()
 		boxItems := []structures.Item{
-			{
-				Weight:  10,
-				Utility: 10,
-			},
-			{
-				Weight:  5,
-				Utility: 15,
-			},
-			{
-				Weight:  20,
-				Utility: 30,
-			},
-			{
-				Weight:  15,
-				Utility: 40,
-			},
+			{Weight: 10, Utility: 4},
+			{Weight: 47, Utility: 60},
+			{Weight: 5, Utility: 32},
+			{Weight: 4, Utility: 23},
+			{Weight: 50, Utility: 72},
+			{Weight: 8, Utility: 80},
+			{Weight: 87, Utility: 46},
+			{Weight: 85, Utility: 65},
+			{Weight: 55, Utility: 95},
 		}
 
 		box.Items = boxItems
 
-		backpack := structures.NewEmptyBackpack(20)
-		backpackItems := []structures.Item{
-			{
-				Weight:  10,
-				Utility: 1,
-			},
-			{
-				Weight:  10,
-				Utility: 5,
-			},
-		}
-		backpack.Items = backpackItems
+		backpack := structures.NewEmptyBackpack(269)
+		backpack.FillBackpack(&box)
 
-		newBackpack := Process(
+		fmt.Println(backpack.Items)
+
+		value := Process(
 			functions.ValidationFunction,
 			functions.RandomSolution,
-			10,
-			100,
-			100,
+			0.3,
+			200,
+			50,
 			backpack,
 			box,
 		)
 
-		fmt.Println(newBackpack)
+		fmt.Println(functions.ValidationFunction(value))
 	})
 }

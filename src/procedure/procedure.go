@@ -7,12 +7,13 @@ import (
 	"math/rand"
 )
 
+// Função base para o algoritmo de simulated annealing
 func Process(
 	validationFunction types.ValidationFunction,
 	randomSolution types.RandomSolution,
-	alpha int,
+	alpha float64,
 	maxIterations int,
-	initalTemp int,
+	initalTemp float64,
 	solution structures.Backpack,
 	possibleItems structures.Box,
 ) structures.Backpack {
@@ -20,11 +21,16 @@ func Process(
 	currentIteration := 0
 	currentTemperatue := initalTemp
 
+	var (
+		neighbor structures.Backpack
+		delta    int
+	)
+
 	for currentTemperatue > 0 {
 		for currentIteration < maxIterations {
 			currentIteration += 1
-			neighbor := randomSolution(solution, &possibleItems)
-			delta := validationFunction(neighbor) - validationFunction(solution)
+			neighbor = randomSolution(solution, &possibleItems)
+			delta = validationFunction(neighbor) - validationFunction(solution)
 			if delta > 0 {
 				solution = neighbor
 				if validationFunction(neighbor) > validationFunction(bestSolution) {
