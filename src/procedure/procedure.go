@@ -22,17 +22,19 @@ func Process(
 	currentTemperatue := initalTemp
 
 	var (
-		neighbor structures.Backpack
-		delta    int
+		neighbor         structures.Backpack
+		newPossibleItems structures.Box
+		delta            int
 	)
 
 	for currentTemperatue > 0 {
 		for currentIteration < maxIterations {
 			currentIteration += 1
-			neighbor = randomSolution(solution, &possibleItems)
+			neighbor, newPossibleItems = randomSolution(solution, possibleItems)
 			delta = validationFunction(neighbor) - validationFunction(solution)
 			if delta > 0 {
 				solution = neighbor
+				possibleItems = newPossibleItems
 				if validationFunction(neighbor) > validationFunction(bestSolution) {
 					bestSolution = neighbor
 				}
@@ -40,6 +42,7 @@ func Process(
 				x := rand.Float64()
 				if x < math.Pow(math.E, (-float64(delta)/float64(currentTemperatue))) {
 					solution = neighbor
+					possibleItems = newPossibleItems
 				}
 			}
 		}

@@ -6,7 +6,7 @@ import (
 )
 
 // Solução aleatória gerada a partir da mochila e da caixa
-func RandomSolution(bp structures.Backpack, box *structures.Box) structures.Backpack {
+func RandomSolution(bp structures.Backpack, box structures.Box) (structures.Backpack, structures.Box) {
 	var (
 		boxPosition      int
 		backpackPosition int
@@ -36,5 +36,5 @@ selectItems:
 	}
 
 	// Retorna a nova mochila
-	return bp
+	return bp, box
 }

@@ -34,7 +34,7 @@ func TestProcedure(t *testing.T) {
 			functions.RandomSolution,
 			0.3,
 			200,
-			50,
+			100,
 			backpack,
 			box,
 		)

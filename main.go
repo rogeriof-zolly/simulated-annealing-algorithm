@@ -16,9 +16,9 @@ func testeGrande() (int, int) {
 	value := procedure.Process(
 		functions.ValidationFunction,
 		functions.RandomSolution,
-		0.2,
-		1000,
-		500,
+		0.35,
+		3000,
+		600,
 		ba,
 		bo,
 	)
@@ -34,9 +34,9 @@ func testePequeno() (int, int) {
 	value := procedure.Process(
 		functions.ValidationFunction,
 		functions.RandomSolution,
-		0.2,
-		1000,
-		100,
+		0.35,
+		3000,
+		600,
 		ba,
 		bo,
 	)
